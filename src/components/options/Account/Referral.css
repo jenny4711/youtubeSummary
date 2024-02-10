@@ -1,0 +1,25 @@
+
+.RefDiv{
+  width:550px !important;
+  height:172px;
+  border-radius:8px;
+  padding:6px;
+  background-color: #F4F4F5 !important;
+  margin:0;
+  margin-top:20px;
+  display:flex;
+  flex-direction: column;
+  padding-left:18px !important;
+  margin-bottom:50px !important;
+ 
+ 
+
+}
+.Ref_content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top:10px !important;
+  align-items: center;
+}
+/* .MuiGrid-spacing-xs-2{} */

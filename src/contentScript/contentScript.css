@@ -1,0 +1,79 @@
+.overlayCard{
+  position:fixed;
+  left:71%;
+  top:7%;
+  bottom:13%;
+  width:405px;
+  max-width: 405px;
+  max-height: 540px;
+  background-color: red !important;
+  color: white !important;
+  z-index:99999;
+  
+
+}
+
+.testDiv{
+  background-color: whitesmoke !important;
+  width:387px;
+  padding:10px;
+
+}
+.headerDiv{
+  align-items: center;
+  text-align: center;
+  width:387px;
+}
+.headerDiv{
+  display:flex;
+  justify-content: space-between;
+
+  font-size:16px;
+  font-weight:bold;
+}
+.contentDiv{
+  display:flex;
+  justify-content: flex-start;
+  font-size:14px;
+  padding:6px;
+  margin:6px;
+  line-height:2;
+}
+.testBtn{
+  background-color: black !important;
+
+  color:white !important;
+  width:387px;
+  align-items: center;
+  text-align: center;
+  height:47px;
+  border-radius:100px
+
+}
+ .svg{
+  width:16px;
+  height:16px;
+ }
+
+.none{
+  display:'none'
+}
+
+
+
+
+
+
+.overlayCardq {
+  z-index: 1000; /* 다른 요소보다 높은 z-index 값을 설정 */
+  position: fixed; /* z-index가 작동하려면 position이 설정되어야 함 */
+  left:70%;
+  top:3%;
+  bottom:13%;
+  width:405px;
+  max-width: 405px;
+  max-height: 540px;
+  background-color: red !important;
+  color: white !important;
+  z-index:99999;
+}

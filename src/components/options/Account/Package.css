@@ -1,0 +1,42 @@
+.Package_Div{
+ 
+height: 202px;
+padding:12px;
+border-radius: 8px;
+background-color: #F4F4F5 !important;
+}
+.Package_title{
+  display: flex;
+  flex-direction: row;
+}
+.Package_titleDiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.package_btn{
+  width: 520px;
+height: 40px;
+top: 619px;
+left: 485px;
+padding: 23px, 26px, 23px, 26px;
+border-radius: 100px;
+gap: 8px;
+background-color:  #000000;
+color:white;
+
+}
+.list{
+  display: flex;
+  flex-direction: row;
+}
+.list .pk_text{
+  margin-left:8px;
+  font-size:14px;
+}
+ .Package_title .pk_title{
+  margin-left:8px;
+  font-size:14px;
+  font-weight:700;
+}

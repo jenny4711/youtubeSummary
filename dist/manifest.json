@@ -1,0 +1,34 @@
+{
+  "name": "ZionSummary",
+  "description": "Youtube Summary with Gpt!",
+  "version": "1.0.0",
+  "oauth2":{
+    "client_id":"569916602742-euf8b4pgltop5a5vv01q04hhi2v2j947.apps.googleusercontent.com",
+    "scopes":[
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  },
+  "manifest_version": 3,
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Youtube Summary",
+    "default_icon": "icon.png"
+  },
+  "permissions": ["storage","activeTab","scripting","tabs", "identity"],
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["contentScript.js"]
+    }
+  ]
+}

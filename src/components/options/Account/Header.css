@@ -1,0 +1,25 @@
+.MuiGrid-spacing-xs-3{
+  width:550px !important;
+  height:72px;
+  border-radius:8px;
+  padding:6px;
+  background-color: #F4F4F5 !important;
+ 
+
+}
+.Header_Avata{
+  width: 40;;
+  height:40;
+}
+/* .Header_content{
+  padding-right: 20px;
+} */
+.Header_btn{
+  width:80px;
+  height:40px;
+  background-color: black !important ;
+  color:white !important;
+  Padding:23px, 26px, 23px, 26px;
+border-radius: 100px;
+
+}

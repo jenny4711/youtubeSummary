@@ -1,0 +1,45 @@
+.DailySummeries{
+  width:550px !important;
+  height:72px;
+  border-radius:8px;
+  padding:16px;
+  background-color: #F4F4F5 !important;
+  display:flex;
+  flex-direction: column;
+  margin-top:50px !important;
+   margin-bottom:50px !important;
+
+}
+
+/* .DailySummeries_content{
+  display:flex;
+  flex-direction: row;
+} */
+/* .MuiGrid-spacing-xs-2 > .MuiGrid-item{} */
+
+.MuiGrid-container{
+  display:flex;
+  flex-wrap:nowrap !important;
+  justify-content: flex-end !important;
+}
+.MuiLinearProgress-barColorPrimary {
+  background-color: black !important;
+  
+}
+.MuiLinearProgress-root{
+  height:6px !important;
+}
+.MuiLinearProgress-colorPrimary{
+  background-color: white !important;
+}
+
+.MuiBox-root-1 {
+  width: 100%;
+  /* min-width: 105px; */
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+}
+.MuiGrid-grid-xs-8 {
+  max-width:100% !important;
+}

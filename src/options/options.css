@@ -1,0 +1,36 @@
+body {
+  /* background-color: #fbfafa; */
+  background-color: #fbfafa;
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  width:100%;
+}
+.optionsTitle{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width:100%;
+  margin-top:40px;
+  margin-bottom: 20px;
+  flex-direction: row;
+  align-items: center;
+}
+.optionSubTitle{
+  display:flex;
+  justify-content:flex-start;
+}
+.optionsTitle h1{
+  font-weight: 700;
+  font-size:24px;
+}
+.optionSubTitle h1{
+  font-weight: 400;
+  font-size:24px;
+  margin-bottom: 35px;
+}
+/* .optionsHeader{
+  margin-top:20px;
+} */
+
+
