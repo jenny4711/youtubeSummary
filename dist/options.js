@@ -511,17 +511,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const SelectingTool = ({ val, title, onPress }) => {
+const SelectingTool = ({ val, title, option1, option2, option3, option4, value1, value2, value3, value4, onPress }) => {
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'SelectingForm' },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_FormControl__WEBPACK_IMPORTED_MODULE_2__.default, { variant: "filled", sx: { m: 1, minWidth: 550 } },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_InputLabel__WEBPACK_IMPORTED_MODULE_3__.default, { id: "demo-simple-select-filled-label" }, title),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Select__WEBPACK_IMPORTED_MODULE_4__.default, { labelId: "demo-simple-select-filled-label", id: "demo-simple-select-filled", value: val, onChange: onPress },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: val },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, val)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: 'Korean' }, "Korean"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: 'English' }, "USA"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: 'Chinese' }, "Chinese"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: 'Spanish' }, "Spanish")))));
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: value1 }, option1),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: value2 }, option2),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: value3 }, option3),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: value4 }, option4)))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectingTool);
 
@@ -584,7 +584,7 @@ const App = () => {
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'optionSubTitle' },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Setting")),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'SelectingTool' },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__.default, { val: lang, title: 'Default language', onPress: handleChange }))));
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__.default, { val: lang, title: 'Default language', option1: 'Korean', option2: 'English', option3: 'Chinese', option4: 'Spanish', value1: 'Korean', value2: 'English', value3: 'Chinese', value4: 'Spanish', onPress: handleChange }))));
 };
 const root = document.createElement('div');
 document.body.appendChild(root);

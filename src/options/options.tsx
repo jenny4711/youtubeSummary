@@ -50,7 +50,7 @@ const App: React.FC<{}> = () => {
       <h1>Setting</h1>
       </div>
       <div className='SelectingTool'>
-        <SelectingTool val={lang} title={'Default language'} onPress={handleChange} />
+        <SelectingTool val={lang} title={'Default language'} option1={'Korean'} option2={'English'} option3={'Chinese'} option4={'Spanish'} value1={'Korean'} value2={'English'} value3={'Chinese'}value4={'Spanish'} onPress={handleChange} />
       </div>
 
     </div>

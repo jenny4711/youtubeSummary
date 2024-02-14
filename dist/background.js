@@ -169,6 +169,23 @@ chrome.runtime.onInstalled.addListener(() => {
             (0,_utils_storage__WEBPACK_IMPORTED_MODULE_0__.setStoredUserInfo)(email, family_name, given_name, picture);
         });
     });
+    //   chrome.runtime.onMessage.addListener(function(message) {
+    //     switch (message.action) {
+    //         case "openOptionsPage":
+    //             openOptionsPage();
+    //             break;
+    //         default:
+    //             break;
+    //     }
+    // });
+    // function openOptionsPage(){
+    //     chrome.runtime.openOptionsPage();
+    // }
+});
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "openOptionsPage") {
+        chrome.runtime.openOptionsPage();
+    }
 });
 
 })();

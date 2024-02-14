@@ -20,7 +20,7 @@
     "default_title": "Youtube Summary",
     "default_icon": "icon.png"
   },
-  "permissions": ["storage","activeTab","scripting","tabs", "identity"],
+  "permissions": ["storage","activeTab","scripting","tabs", "identity","nativeMessaging","clipboardWrite"],
   "options_page": "options.html",
   "background": {
     "service_worker": "background.js"

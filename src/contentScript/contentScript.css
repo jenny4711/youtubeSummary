@@ -41,7 +41,9 @@
 }
 .testBtn{
   background-color: black !important;
-
+display:flex;
+justify-content: center;
+align-items: center;
   color:white !important;
   width:387px;
   align-items: center;
@@ -56,11 +58,13 @@
  }
 
 .none{
-  display:'none'
+  display:none;
 }
 
 
-
+.btnSpan{
+  margin-left: 8px;
+}
 
 
 
@@ -76,4 +80,18 @@
   background-color: red !important;
   color: white !important;
   z-index:99999;
+}
+.copyBtn{
+  background-color: white;
+  color:black;
+ border-color:white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top:4px;
+    width:387px;
+    align-items: center;
+    text-align: center;
+    height:47px;
+    border-radius:100px
 }

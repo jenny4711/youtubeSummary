@@ -3,9 +3,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
+import { SelectingTypes } from '../../../utils/interface';
 import './Select.css'
-const SelectingTool:React.FC<{val:string,title:string,onPress:(event:SelectChangeEvent)=>void}>=({val,title,onPress})=>{
+
+const SelectingTool:React.FC<SelectingTypes>=({val,title,option1,option2,option3,option4,value1,value2,value3,value4,onPress})=>{
  
   return (
     <div className='SelectingForm'>
@@ -21,10 +22,10 @@ const SelectingTool:React.FC<{val:string,title:string,onPress:(event:SelectChang
           <MenuItem value={val}>
             <em>{val}</em>
           </MenuItem>
-          <MenuItem value={'Korean'}>Korean</MenuItem>
-          <MenuItem value={'English'}>USA</MenuItem>
-          <MenuItem value={'Chinese'}>Chinese</MenuItem>
-          <MenuItem value={'Spanish'}>Spanish</MenuItem>
+          <MenuItem value={value1}>{option1}</MenuItem>
+          <MenuItem value={value2}>{option2}</MenuItem>
+          <MenuItem value={value3}>{option3}</MenuItem>
+          <MenuItem value={value4}>{option4}</MenuItem>
         </Select>
       </FormControl>
     </div>
