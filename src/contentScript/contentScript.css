@@ -53,8 +53,8 @@ align-items: center;
 
 }
  .svg{
-  width:16px;
-  height:16px;
+  width:20px;
+  height:20px;
  }
 
 .none{
@@ -94,4 +94,8 @@ align-items: center;
     text-align: center;
     height:47px;
     border-radius:100px
+}
+
+.tooltip{
+  background-color: red;
 }

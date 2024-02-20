@@ -10,12 +10,24 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "setStorageCredit": () => (/* binding */ setStorageCredit),
 /* harmony export */   "setStoredUserInfo": () => (/* binding */ setStoredUserInfo),
 /* harmony export */   "setStoredForm": () => (/* binding */ setStoredForm),
 /* harmony export */   "setStoredDataResult": () => (/* binding */ setStoredDataResult),
+/* harmony export */   "getStoredCredit": () => (/* binding */ getStoredCredit),
 /* harmony export */   "getStoredUserInfo": () => (/* binding */ getStoredUserInfo),
 /* harmony export */   "getStoredForm": () => (/* binding */ getStoredForm)
 /* harmony export */ });
+function setStorageCredit(credit) {
+    const vals = {
+        credit
+    };
+    return new Promise((resolve) => {
+        chrome.storage.local.set(vals, () => {
+            resolve();
+        });
+    });
+}
 function setStoredUserInfo(email, family_name, given_name, picture) {
     const vals = {
         email,
@@ -29,10 +41,10 @@ function setStoredUserInfo(email, family_name, given_name, picture) {
         });
     });
 }
-function setStoredForm(lang, prompt) {
+function setStoredForm(lang, ask) {
     const vals = {
+        ask,
         lang,
-        prompt
     };
     return new Promise((resolve) => {
         chrome.storage.local.set({ "resultForm": vals }, () => {
@@ -47,6 +59,18 @@ function setStoredDataResult(data) {
     return new Promise((resolve) => {
         chrome.storage.local.set({ "resultData": val }, () => {
             resolve();
+        });
+    });
+}
+function getStoredCredit() {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.get("credit", (result) => {
+            if (chrome.runtime.lastError) {
+                reject(chrome.runtime.lastError);
+            }
+            else {
+                resolve(result);
+            }
         });
     });
 }

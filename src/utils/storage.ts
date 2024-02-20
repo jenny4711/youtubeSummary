@@ -10,9 +10,28 @@ export interface LocalStorageData{
 }
 
 export interface LocalStorageForm{
-  prompt:string
+  ask:string
   lang:string
+
 }
+
+export interface LocalStorageCredit{
+  credit:number
+}
+
+
+export type LocalStorageCreditScore = keyof LocalStorageCredit
+export function setStorageCredit(credit:number):Promise<void>{
+  const vals:LocalStorageCredit={
+    credit
+  }
+  return new Promise((resolve)=>{
+    chrome.storage.local.set(vals,()=>{
+      resolve()
+    })
+  })
+}
+
 
 export type LocalStorageUserInfo=keyof LocalStorageInfo
 export function setStoredUserInfo(email:string,family_name:string,given_name:string,picture:string):Promise<void>{
@@ -30,10 +49,12 @@ export function setStoredUserInfo(email:string,family_name:string,given_name:str
 }
 
 export type LocalStoragedFormData=keyof LocalStorageForm
-export function setStoredForm(lang:string,prompt:string):Promise<void>{
+export function setStoredForm(lang:string,ask:string):Promise<void>{
   const vals:LocalStorageForm={
+    ask,
     lang,
-    prompt
+   
+
     
   }
   return new Promise((resolve)=>{
@@ -60,7 +81,17 @@ return new Promise((resolve)=>{
 
 
 
-
+export function getStoredCredit(): Promise<LocalStorageCredit> {
+  return new Promise<LocalStorageCredit>((resolve, reject) => {
+    chrome.storage.local.get("credit", (result) => {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
+      } else {
+        resolve(result as LocalStorageCredit);
+      }
+    });
+  });
+}
 
 
 

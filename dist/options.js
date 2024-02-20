@@ -351,9 +351,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const DailySummeries = () => {
-    let value = 10;
-    let max = 20;
+const DailySummeries = ({ credit }) => {
+    let value = credit;
+    let max = 10;
     const normalizedValue = (value / max) * 100;
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__.default, { container: true, className: 'DailySummeries', spacing: 2 },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__.default, { item: true, xs: 8, className: 'DailySummeries_content' },
@@ -511,17 +511,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const SelectingTool = ({ val, title, option1, option2, option3, option4, value1, value2, value3, value4, onPress }) => {
+const SelectingTool = ({ val, title, option1, option2, option3, option4, option5, option6, onPress }) => {
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'SelectingForm' },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_FormControl__WEBPACK_IMPORTED_MODULE_2__.default, { variant: "filled", sx: { m: 1, minWidth: 550 } },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_InputLabel__WEBPACK_IMPORTED_MODULE_3__.default, { id: "demo-simple-select-filled-label" }, title),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Select__WEBPACK_IMPORTED_MODULE_4__.default, { labelId: "demo-simple-select-filled-label", id: "demo-simple-select-filled", value: val, onChange: onPress },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: val },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, val)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: value1 }, option1),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: value2 }, option2),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: value3 }, option3),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: value4 }, option4)))));
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option1 }, option1),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option2 }, option2),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option3 }, option3),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option4 }, option4),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option5 }, option5),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option6 }, option6)))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectingTool);
 
@@ -555,17 +557,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { Credit } from '../utils/interface';
 const App = () => {
     const [lang, setLang] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-    const [prompt, setPrompt] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("How old are you?");
+    const [ask, setAsk] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("Summarize following in a narrative format, capturing the key events, characters, and plot points in a concise and engaging way.");
+    const [credit, setCredit] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
     const handleChange = (event) => {
         console.log(event.target.value, 'evt-value');
         setLang(event.target.value);
-        setPrompt('explain how to do it in order in following data');
+    };
+    const handleChangAsk = (event) => {
+        console.log(event.target.value, 'evt-valueAsk');
+        setAsk(event.target.value);
     };
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        (0,_utils_storage__WEBPACK_IMPORTED_MODULE_3__.getStoredCredit)().then((sc) => {
+            if (sc && typeof sc === 'object' && 'credit' in sc && typeof sc.credit === 'number') {
+                setCredit(sc.credit);
+            }
+        });
+    }, []);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         console.log(lang, 'testOption!');
-        (0,_utils_storage__WEBPACK_IMPORTED_MODULE_3__.setStoredForm)(lang, prompt);
+        console.log(ask, 'ask');
+        (0,_utils_storage__WEBPACK_IMPORTED_MODULE_3__.setStoredForm)(lang, ask);
     }, [lang, prompt]);
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'options' },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'optionsTitle' },
@@ -576,7 +591,7 @@ const App = () => {
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'optionsHeader' },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Account_Header__WEBPACK_IMPORTED_MODULE_4__.default, null)),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'optionsBar' },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Account_DailySummeries__WEBPACK_IMPORTED_MODULE_5__.default, null)),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Account_DailySummeries__WEBPACK_IMPORTED_MODULE_5__.default, { credit: credit })),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'Refferal' },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Account_Referral__WEBPACK_IMPORTED_MODULE_6__.default, null)),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'Package' },
@@ -584,7 +599,8 @@ const App = () => {
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'optionSubTitle' },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Setting")),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'SelectingTool' },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__.default, { val: lang, title: 'Default language', option1: 'Korean', option2: 'English', option3: 'Chinese', option4: 'Spanish', value1: 'Korean', value2: 'English', value3: 'Chinese', value4: 'Spanish', onPress: handleChange }))));
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__.default, { val: lang, title: 'Default language', option1: 'Korean', option2: 'English', option3: 'Chinese', option4: 'Spanish', option5: 'Japanese', option6: 'Russian', onPress: handleChange }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__.default, { val: ask, title: 'Default Prompt', option1: 'Summarize the following into two sentences at the 12th grade level:', option2: 'Summeraize following in a step-by-step format,providing clear instructions on how to complete a task or achieve a goal.', option3: 'Summarize following in a narrative format, capturing the key events, characters, and plot points in a concise and engaging way.', option4: 'Summarize following in a timely and relevant manner, highlighting the most important takeaways and insights that are applicable to current events or trends.', option5: '', option6: '', onPress: handleChangAsk }))));
 };
 const root = document.createElement('div');
 document.body.appendChild(root);
@@ -601,12 +617,24 @@ react_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "setStorageCredit": () => (/* binding */ setStorageCredit),
 /* harmony export */   "setStoredUserInfo": () => (/* binding */ setStoredUserInfo),
 /* harmony export */   "setStoredForm": () => (/* binding */ setStoredForm),
 /* harmony export */   "setStoredDataResult": () => (/* binding */ setStoredDataResult),
+/* harmony export */   "getStoredCredit": () => (/* binding */ getStoredCredit),
 /* harmony export */   "getStoredUserInfo": () => (/* binding */ getStoredUserInfo),
 /* harmony export */   "getStoredForm": () => (/* binding */ getStoredForm)
 /* harmony export */ });
+function setStorageCredit(credit) {
+    const vals = {
+        credit
+    };
+    return new Promise((resolve) => {
+        chrome.storage.local.set(vals, () => {
+            resolve();
+        });
+    });
+}
 function setStoredUserInfo(email, family_name, given_name, picture) {
     const vals = {
         email,
@@ -620,10 +648,10 @@ function setStoredUserInfo(email, family_name, given_name, picture) {
         });
     });
 }
-function setStoredForm(lang, prompt) {
+function setStoredForm(lang, ask) {
     const vals = {
+        ask,
         lang,
-        prompt
     };
     return new Promise((resolve) => {
         chrome.storage.local.set({ "resultForm": vals }, () => {
@@ -638,6 +666,18 @@ function setStoredDataResult(data) {
     return new Promise((resolve) => {
         chrome.storage.local.set({ "resultData": val }, () => {
             resolve();
+        });
+    });
+}
+function getStoredCredit() {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.get("credit", (result) => {
+            if (chrome.runtime.lastError) {
+                reject(chrome.runtime.lastError);
+            }
+            else {
+                resolve(result);
+            }
         });
     });
 }

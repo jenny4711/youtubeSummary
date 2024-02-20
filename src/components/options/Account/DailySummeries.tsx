@@ -2,10 +2,10 @@ import React,{useEffect,useState} from 'react';
 import {Box,Card,CardContent,Typography,CardActions,Button,Grid,Avatar,LinearProgress} from '@material-ui/core';
 import './DailySummeries.css'
 
-const DailySummeries:React.FC<{}>=()=>{
+const DailySummeries:React.FC<{credit:number}>=({credit})=>{
 
-  let value =10
-  let max=20
+  let value =credit
+  let max=10
   const normalizedValue = (value / max) * 100;
   return(
     <Grid  container className='DailySummeries' spacing={2}>

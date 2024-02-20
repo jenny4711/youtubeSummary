@@ -13,11 +13,47 @@ export interface SelectingTypes{
   option2:string
   option3:string
   option4:string
-  value1:string
-  value2:string
-  value3:string
-  value4:string
+  option5:string
+  option6:string
+
   onPress:(event:SelectChangeEvent)=>void
 
 
+}
+export interface HistoryState{
+  summary:string,
+  loading:boolean,
+  error:string,
+  data:any,
+}
+export interface UserState {
+data:any,
+  loading:boolean,
+  error:string,
+  lang:string,
+  summary:string,
+  credit:number,
+  user:any,
+}
+
+export interface User {
+  email: string;
+  firstName: string;
+  lastName: string;
+  picture:string;
+  status:string;
+  lang:string;
+  credit:number;
+
+}
+
+export interface History{
+  videoId:string,
+  lang:string,
+  
+}
+
+
+export interface Credit{
+  credit:number,
 }
