@@ -1,5 +1,6 @@
 // google clientId: 569916602742-euf8b4pgltop5a5vv01q04hhi2v2j947.apps.googleusercontent.com
 import { setStoredUserInfo , setStoredForm } from '../utils/storage';
+
 // TODO: background script
 chrome.runtime.onInstalled.addListener(() => {
   chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
@@ -22,21 +23,11 @@ chrome.runtime.onInstalled.addListener(() => {
         const given_name=data.given_name
         const picture=data.picture
       setStoredUserInfo(email,family_name,given_name,picture)
+     
       });
   });
-//   chrome.runtime.onMessage.addListener(function(message) {
-//     switch (message.action) {
-//         case "openOptionsPage":
-//             openOptionsPage();
-//             break;
-//         default:
-//             break;
-//     }
-// });
 
-// function openOptionsPage(){
-//     chrome.runtime.openOptionsPage();
-// }
+
 
  })
 

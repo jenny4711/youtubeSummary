@@ -9,6 +9,7 @@ import Refferal from '../components/options/Account/Referral'
 import Package from '../components/options/Account/Package'
 import SelectingTool from '../components/options/Settings/SelectingTool';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { langObj,promptStyle } from '../utils/settingOpt';
 // import { Credit } from '../utils/interface';
 
 const App: React.FC<{}> = () => {
@@ -41,10 +42,10 @@ const App: React.FC<{}> = () => {
  
   useEffect(()=>{
     console.log(lang,'testOption!')
-    console.log(ask,'ask')
+    console.log(ask,'ask!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     setStoredForm(lang,ask)
 
-  },[lang,prompt])
+  },[lang,ask,prompt])
   return (
     <div className='options' >
       <div className='optionsTitle'>
@@ -70,16 +71,11 @@ const App: React.FC<{}> = () => {
       <h1>Setting</h1>
       </div>
       <div className='SelectingTool'>
-        <SelectingTool val={lang} title={'Default language'} option1={'Korean'} option2={'English'} option3={'Chinese'} option4={'Spanish'} option5={'Japanese'} option6={'Russian'} onPress={handleChange} />
+        <SelectingTool val={lang} title={'Default language'} obj={langObj} onPress={handleChange} />
         <SelectingTool 
         val={ask} 
         title={'Default Prompt'} 
-        option1={'Summarize the following into two sentences at the 12th grade level:'} 
-        option2={'Summeraize following in a step-by-step format,providing clear instructions on how to complete a task or achieve a goal.'}
-         option3={'Summarize following in a narrative format, capturing the key events, characters, and plot points in a concise and engaging way.'} 
-         option4={'Summarize following in a timely and relevant manner, highlighting the most important takeaways and insights that are applicable to current events or trends.'} 
-         option5={''} 
-         option6={''} 
+        obj={promptStyle} 
          onPress={handleChangAsk} 
          />
       </div>

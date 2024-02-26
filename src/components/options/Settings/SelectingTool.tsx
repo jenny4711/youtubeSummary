@@ -6,7 +6,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { SelectingTypes } from '../../../utils/interface';
 import './Select.css'
 
-const SelectingTool:React.FC<SelectingTypes>=({val,title,option1,option2,option3,option4,option5,option6,onPress})=>{
+const SelectingTool:React.FC<SelectingTypes>=({val,title,obj,onPress})=>{
  
   return (
     <div className='SelectingForm'>
@@ -22,12 +22,8 @@ const SelectingTool:React.FC<SelectingTypes>=({val,title,option1,option2,option3
           <MenuItem value={val}>
             <em>{val}</em>
           </MenuItem>
-          <MenuItem value={option1}>{option1}</MenuItem>
-          <MenuItem value={option2}>{option2}</MenuItem>
-          <MenuItem value={option3}>{option3}</MenuItem>
-          <MenuItem value={option4}>{option4}</MenuItem>
-          <MenuItem value={option5}>{option5}</MenuItem>
-          <MenuItem value={option6}>{option6}</MenuItem>
+         { obj.map((item,idx)=>( <MenuItem key={idx} value={item.value}>{item.option}</MenuItem>))}
+         
         </Select>
       </FormControl>
     </div>

@@ -9,12 +9,7 @@ export interface HeaderTypes{
 export interface SelectingTypes{
   val:string
   title:string
-  option1:string
-  option2:string
-  option3:string
-  option4:string
-  option5:string
-  option6:string
+  obj:any
 
   onPress:(event:SelectChangeEvent)=>void
 

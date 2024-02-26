@@ -3,17 +3,20 @@ import { Dispatch } from 'redux'
 import { historyActions } from '../reducer/historyReducer'
 import { userActions } from '../reducer/userReducer'
 import { History } from '../../utils/interface'
-import { getStoredForm } from '../../utils/storage'
+import { getStoredForm ,getStoredUserInfo} from '../../utils/storage'
 import { subCredit } from './userAction'
 export const createHistory=(videoId:string,subCredit:()=>any)=>async(dispatch:Dispatch)=>{
   try{
+    const userInfo=await getStoredUserInfo()
+
     const form = await getStoredForm()
     const lang = form?.lang;
     const ask = form?.ask
+    const email=userInfo?.email
     console.log(form,'form-action')
     dispatch(historyActions.allRequest())
 
-    const res = await api.post('/history',{videoId,lang,ask})
+    const res = await api.post('/history',{videoId,lang,ask,email})
     console.log(res,'historyAction')
     if(res.status !==200) throw new Error('error-createHistory')
     dispatch(subCredit())

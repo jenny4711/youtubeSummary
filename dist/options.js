@@ -511,19 +511,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const SelectingTool = ({ val, title, option1, option2, option3, option4, option5, option6, onPress }) => {
+const SelectingTool = ({ val, title, obj, onPress }) => {
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'SelectingForm' },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_FormControl__WEBPACK_IMPORTED_MODULE_2__.default, { variant: "filled", sx: { m: 1, minWidth: 550 } },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_InputLabel__WEBPACK_IMPORTED_MODULE_3__.default, { id: "demo-simple-select-filled-label" }, title),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Select__WEBPACK_IMPORTED_MODULE_4__.default, { labelId: "demo-simple-select-filled-label", id: "demo-simple-select-filled", value: val, onChange: onPress },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: val },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("em", null, val)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option1 }, option1),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option2 }, option2),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option3 }, option3),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option4 }, option4),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option5 }, option5),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { value: option6 }, option6)))));
+                obj.map((item, idx) => (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_MenuItem__WEBPACK_IMPORTED_MODULE_5__.default, { key: idx, value: item.value }, item.option)))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectingTool);
 
@@ -539,7 +534,7 @@ const SelectingTool = ({ val, title, option1, option2, option3, option4, option5
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _mui_icons_material_LightbulbCircle__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @mui/icons-material/LightbulbCircle */ "./node_modules/@mui/icons-material/LightbulbCircle.js");
+/* harmony import */ var _mui_icons_material_LightbulbCircle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/icons-material/LightbulbCircle */ "./node_modules/@mui/icons-material/LightbulbCircle.js");
 /* harmony import */ var _options_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./options.css */ "./src/options/options.css");
 /* harmony import */ var _utils_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/storage */ "./src/utils/storage.ts");
 /* harmony import */ var _components_options_Account_Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/options/Account/Header */ "./src/components/options/Account/Header.tsx");
@@ -547,6 +542,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_options_Account_Referral__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/options/Account/Referral */ "./src/components/options/Account/Referral.tsx");
 /* harmony import */ var _components_options_Account_Package__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/options/Account/Package */ "./src/components/options/Account/Package.tsx");
 /* harmony import */ var _components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/options/Settings/SelectingTool */ "./src/components/options/Settings/SelectingTool.tsx");
+/* harmony import */ var _utils_settingOpt__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/settingOpt */ "./src/utils/settingOpt.ts");
+
 
 
 
@@ -579,12 +576,12 @@ const App = () => {
     }, []);
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         console.log(lang, 'testOption!');
-        console.log(ask, 'ask');
+        console.log(ask, 'ask!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         (0,_utils_storage__WEBPACK_IMPORTED_MODULE_3__.setStoredForm)(lang, ask);
-    }, [lang, prompt]);
+    }, [lang, ask, prompt]);
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'options' },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'optionsTitle' },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_LightbulbCircle__WEBPACK_IMPORTED_MODULE_9__.default, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_LightbulbCircle__WEBPACK_IMPORTED_MODULE_10__.default, null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Pancake")),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'optionSubTitle' },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Account")),
@@ -599,12 +596,51 @@ const App = () => {
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'optionSubTitle' },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Setting")),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: 'SelectingTool' },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__.default, { val: lang, title: 'Default language', option1: 'Korean', option2: 'English', option3: 'Chinese', option4: 'Spanish', option5: 'Japanese', option6: 'Russian', onPress: handleChange }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__.default, { val: ask, title: 'Default Prompt', option1: 'Summarize the following into two sentences at the 12th grade level:', option2: 'Summeraize following in a step-by-step format,providing clear instructions on how to complete a task or achieve a goal.', option3: 'Summarize following in a narrative format, capturing the key events, characters, and plot points in a concise and engaging way.', option4: 'Summarize following in a timely and relevant manner, highlighting the most important takeaways and insights that are applicable to current events or trends.', option5: '', option6: '', onPress: handleChangAsk }))));
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__.default, { val: lang, title: 'Default language', obj: _utils_settingOpt__WEBPACK_IMPORTED_MODULE_9__.langObj, onPress: handleChange }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_options_Settings_SelectingTool__WEBPACK_IMPORTED_MODULE_8__.default, { val: ask, title: 'Default Prompt', obj: _utils_settingOpt__WEBPACK_IMPORTED_MODULE_9__.promptStyle, onPress: handleChangAsk }))));
 };
 const root = document.createElement('div');
 document.body.appendChild(root);
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), root);
+
+
+/***/ }),
+
+/***/ "./src/utils/settingOpt.ts":
+/*!*********************************!*\
+  !*** ./src/utils/settingOpt.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "langObj": () => (/* binding */ langObj),
+/* harmony export */   "promptStyle": () => (/* binding */ promptStyle)
+/* harmony export */ });
+const langObj = [
+    { option: 'English', value: 'English' },
+    { option: 'Korean', value: 'Korean' },
+    { option: 'Spanish', value: 'Spanish' },
+    { option: 'Japanese', value: 'Japanese' },
+    { option: 'Russian', value: 'Russian' },
+];
+const promptStyle = [
+    {
+        option: 'step by step',
+        value: 'Summeraize following in a step-by-step format,providing clear instructions on how to complete a task or achieve a goal.'
+    },
+    {
+        option: 'Highling',
+        value: 'Summarize following in a timely and relevant manner, highlighting the most important takeaways and insights that are applicable to current events or trends.'
+    },
+    {
+        option: 'story',
+        value: 'Summarize following in a narrative format, capturing the key events, characters, and plot points in a concise and engaging way.'
+    }, {
+        option: 'default',
+        value: 'Summarize the following into two sentences at the 12th grade level:'
+    }
+];
 
 
 /***/ }),

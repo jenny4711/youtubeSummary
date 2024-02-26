@@ -1,7 +1,6 @@
 
 import api from '../utils/api'
 import { userActions } from '../reducer/userReducer'
-import { User } from '../../utils/interface'
 import { Dispatch } from 'redux';
 import { getStoredForm ,getStoredUserInfo} from '../../utils/storage'
 
@@ -10,7 +9,6 @@ try{
   const form = await getStoredForm()
   const lang = form?.lang;
   const ask=form?.ask;
-  console.log(form,'form-action')
   dispatch(userActions.allRequest())
   const res = await api.post('/user',{email,firstName,lastName,picture,credit,lang,promptStyle:ask});
 
@@ -18,13 +16,13 @@ try{
   dispatch(userActions.successGetData(res.data))
 dispatch(userActions.successShowCredit(res.data.data.credit))
 dispatch(userActions.successShowLang(res.data.data.lang))
-  console.log(res.data.data.lang,'signUpAction!!!')
-
 
 }catch(error){
   console.log(error,'sigupAction-fail!')
 }
 }
+
+
 
 export const subCredit=()=>async(dispatch:Dispatch)=>{
   try{
@@ -33,8 +31,7 @@ const email=info.email
 dispatch(userActions.allRequest())
 const res = await api.post('/user/subcredit',{email})
 let credit = res?.data.data
-console.log(res.data.data,'creditAction')
-dispatch(userActions.successShowCredit(res.data.data))
+dispatch(userActions.successShowCredit(credit))
 
 
   }catch(error){
@@ -42,26 +39,35 @@ dispatch(userActions.successShowCredit(res.data.data))
   }
 }
 
-
-
-
-
-
-
-export const editLang=(id:string)=>async(dispatch:Dispatch)=>{
+export const editLang=()=>async(dispatch:Dispatch)=>{
   try{
     const form = await getStoredForm()
+    const userInfo= await getStoredUserInfo()
     const lang = form?.lang;
+    const email=userInfo.email
+
    dispatch(userActions.allRequest())
-   const res = await api.put(`/editLang/${id}`,{lang})
-   if(res.status !==200)throw new Error('editlang is fail')
-  //  dispatch(userActions.successShowLang(re))
-   console.log(res,'editlang-res')
-   console.log(id,'editLangAction')
-   console.log(lang,'editLang-Lang')
+  
+   const res = await api.put(`/user/editLang/${email}`,{lang})
+   if(res.status !==200)throw new Error('editLang is fail')
+ 
   
   }catch(error){
     console.log(error,'editLang-fail')
+  }
+}
+
+export const editPropmtStyle=()=>async(dispatch:Dispatch)=>{
+  try{
+    const form = await getStoredForm()
+    const userInfo= await getStoredUserInfo()
+    const promptStyle= form?.ask;
+    const email=userInfo?.email
+    dispatch(userActions.allRequest())
+    const res = await api.put(`/user/editPromptStyle/${email}`,{promptStyle})
+    if(res.status !==200)throw new Error('EditPromptStyle is fail')
+  }catch(error){
+console.log(error,'editPromptStyle!!!!!!!!!Error!!!!!!!!')
   }
 }
 
